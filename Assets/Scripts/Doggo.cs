@@ -9,25 +9,26 @@ public class Doggo : MonoBehaviour {
 	public GameObject zzz;
 	public GameObject hand;
 
-	public int health;
-	public int healthmult;
+	public float health;
 
-	public int power;
-	public int powermult;
+	public float power;
+
+	public float mult = 1;
 	
-	public int fatigue;
+	public float fatigue;
+	public int slowanim = 1;
 	
-	public int food;
+	public float food;
 	
-	public int specialgauge;
+	public float specialgauge;
 
 	float	actiontimer = 0f;
 
 	bool	sleeping = false;
-	float	sleepingTimer = 8f;
+	float	sleepingTimer = 6f;
 
 	bool	petting = false;
-	float	pettingTimer = 4f;
+	float	pettingTimer = 3f;
 
 	bool	eating = false;
 	float	eatingTimer = 4f;
@@ -108,12 +109,13 @@ public class Doggo : MonoBehaviour {
 
 	void TrainDoggo()
 	{
-		if (actiontimer > trainingTimer[stage])
+		if (actiontimer > trainingTimer[stage] * slowanim)
 		{
-			power += 10 * powermult;
-			health += 10 * healthmult;
+			power += 10 * mult;
+			health += 10 * mult;
+			fatigue += 10;
 			food -= 25;
-			if (food < 0)
+			if (food <= 0)
 				food = 0;
 			training[stage] = false;
 			anim.SetBool("training" + stage, training[stage]);
@@ -122,7 +124,7 @@ public class Doggo : MonoBehaviour {
 
 	void Eat()
 	{
-		if (actiontimer > eatingTimer)
+		if (actiontimer > eatingTimer * slowanim)
 		{
 			food += 50;
 			if (food > 100)
@@ -135,7 +137,7 @@ public class Doggo : MonoBehaviour {
 
 	void Sleep()
 	{
-		if (actiontimer > sleepingTimer)
+		if (actiontimer > sleepingTimer * slowanim)
 		{
 			fatigue -= 50;
 			if (fatigue < 0)
@@ -149,9 +151,12 @@ public class Doggo : MonoBehaviour {
 
 	void Pet()
 	{
-		if (actiontimer > pettingTimer)
+		if (actiontimer > pettingTimer * slowanim)
 		{
-			specialgauge += 1;
+			if (fatigue < 100)
+				specialgauge += 1;
+			mult = (1 + (specialgauge * 0.8f)) * ((food / 100) + 0.3f);
+			fatigue += 50;
 			petting = false;
 			anim.SetBool("petting", petting);
 			hand.SetActive(false);
@@ -168,7 +173,11 @@ public class Doggo : MonoBehaviour {
 			Sleep();
 		if (petting == true)
 			Pet();
-
+		mult = (1 + (specialgauge * 0.8f)) * ((food / 100) + 0.3f);
+		if (fatigue > 100)
+			slowanim = 2;
+		else
+			slowanim = 1;
 	}
 
 	// Update is called once per frame
