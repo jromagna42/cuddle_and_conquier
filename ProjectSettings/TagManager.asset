@@ -8,6 +8,8 @@ TagManager:
   - superwoof
   - doggo
   - mechant
+  - bullet
+  - sbullet
   layers:
   - Default
   - TransparentFX

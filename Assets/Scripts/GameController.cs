@@ -5,7 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+	public GameObject startofgame;
+	public GameObject farmintro;
+	public GameObject conquer;
+	// public GameObject startofgame;
+	// public GameObject startofgame;
+	
+
 	void Start () {
+		startofgame.SetActive(false);
+		farmintro.SetActive(false);
+		conquer.SetActive(false);
+
 		// DontDestroyOnLoad(this);
 	}
 
@@ -22,8 +33,8 @@ public class GameController : MonoBehaviour {
 
 	public void	CallLaunchBattle()
 	{
-		SceneManager.LoadSceneAsync("battle"+GameInfo.stage);
-		
+		SceneManager.LoadSceneAsync("battle0"/*+GameInfo.stage*/);
+	//	GameInfo.battle = true;
 		// StartCoroutine(LaunchBattle());
 	}
 
@@ -37,10 +48,51 @@ public class GameController : MonoBehaviour {
 	// 	// GameInfo.stageSet = false;
 	// 	// Destroy(this);
 	// }
+	IEnumerator StartofgameCoroutine()
+	{
+		int i = 0;
+		GameObject[] starttab = new GameObject[] {startofgame,farmintro,conquer};
+		while (i < starttab.Length)
+		{
+			print("sdf");
+			starttab[i].SetActive(true);
+			while (!Input.GetKeyDown(KeyCode.Space))
+				
+			starttab[i].SetActive(false);
+			i++;
+		}
+		return(null);
+	}
 
 	public void	CallLaunchNotBattle()
 	{
-		SceneManager.LoadSceneAsync("stage"+GameInfo.stage);
+		SceneManager.LoadSceneAsync("stage0"/*+GameInfo.stage*/);
 		// StartCoroutine(LaunchNotBattle());
+		GameInfo.battle = false;
+	}
+
+	void Update()
+	{
+		if (GameInfo.battle == true)
+		{
+			if (GameInfo.BattleHealth <= 0)
+			{
+				GameInfo.doggolost = true;
+				CallLaunchNotBattle();
+			}
+			else if (GameInfo.currentennemyhp <= 0)
+			{
+				GameInfo.stage++;
+				CallLaunchNotBattle();
+			}
+		}
+		else
+		{
+			if (GameInfo.startofgame == false)
+			{
+				StartCoroutine(StartofgameCoroutine());
+				GameInfo.startofgame = true;
+			}
+		}
 	}
 }

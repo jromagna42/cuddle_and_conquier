@@ -160,8 +160,8 @@ public class Doggo : MonoBehaviour {
 		if (actiontimer > pettingTimer * animspeed)
 		{
 			if (GameInfo.fatigue < 100)
-				GameInfo.specialgauge += 1;
-			mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f);
+				GameInfo.specialgauge += 1  + GameInfo.stage * 2;
+			// mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f);
 			GameInfo.fatigue += 50;
 			petting = false;
 			anim.SetBool("petting", petting);

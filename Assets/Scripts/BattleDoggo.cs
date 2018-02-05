@@ -77,6 +77,20 @@ public class	BattleDoggo : MonoBehaviour {
 		jumptimer += Time.deltaTime;
 		smallWooftimer += Time.deltaTime;
 		superWooftimer += Time.deltaTime;
+		GameInfo.battledoggopos = transform.position;
 		CheckAction();
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		Debug.Log("dogcoll" + other.tag);
+		if (other.tag == "bullet")
+		{
+			GameInfo.BattleHealth -= GameInfo.ennemypowerTab[GameInfo.stage];
+		}
+		if (other.tag == "sbullet")
+		{
+			GameInfo.BattleHealth -= GameInfo.ennemypowerTab[GameInfo.stage] * 5;
+		}
 	}
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class		GameInfo{
 
+	public static bool battle = false;
+	public static Vector3 battledoggopos;
 	// public static bool battle = false;
 	public static int	stage = 0;
 	// public static bool stageSet = false;
@@ -21,7 +23,15 @@ public static class		GameInfo{
 	
 	public static float	specialgauge = 0;
 
-	public static float maxennemyhp;
-	public static float currentennemyhp;
+	public static float maxennemyhp = 1f;
+	public static float currentennemyhp = 1f;
 	
+	public static float[] ennemyLifeTab = new float[] {500f, 5000f, 50000f, 500000f, 5000000f, 50000000000f};
+	public static float[] ennemypowerTab = new float[] {50f, 500f, 5000f, 50000f, 500000f, 50000000f};
+	public static float[] ennemyspeedTab = new float[] {5f, 4f, 3f, 2f, 1f, 0.5f};
+
+
+	public static bool doggolost = false;
+	public static bool startofgame = false;
+	public static bool famrintro = false;
 }
