@@ -8,19 +8,11 @@ public class Doggo : MonoBehaviour {
 	public GameObject bed;
 	public GameObject zzz;
 	public GameObject hand;
+	
 
-	public float health;
-
-	public float power;
 
 	public float mult = 1;
-	
-	public float fatigue;
-	public int slowanim = 1;
-	
-	public float food;
-	
-	public float specialgauge;
+	public int animspeed = 1;
 
 	float	actiontimer = 0f;
 
@@ -39,24 +31,38 @@ public class Doggo : MonoBehaviour {
 	bool[]	training = new bool[] {false, false, false, false, false};
 	float[] trainingTimer = new float[] { 4f, 3f, 5f, 7f, 9f};
 
+
 	Animator anim;
 	// Use this for initialization
-	void Start () {
-		DontDestroyOnLoad(this);
-		gammelle.SetActive(false);
-		bed.SetActive(false);
-		zzz.SetActive(false);
-		hand.SetActive(false);
-		anim = GetComponent<Animator>();
-		health = 10;
-		power = 5;
-		fatigue = 0;
-		food = 100;
-		specialgauge = 0;
-		Debug.Log("training" + stage);
+	void	Start () {
+		SetNotBattle();
+		// SetBattle();
 	}
 
-	bool IsIdle()
+	void	SetNotBattle()
+	{
+		if (gammelle != null)
+		{
+			anim = GetComponent<Animator>();
+			gammelle.SetActive(false);
+			bed.SetActive(false);
+			zzz.SetActive(false);
+			hand.SetActive(false);
+			// GameInfo.stageSet = true;
+		}
+	}
+
+	// public GameObject battledoggo;
+	// void	SetBattle()
+	// {
+	// 	Debug.Log("SetBattle");
+	// 	// SpriteRenderer sr = GetComponent<SpriteRenderer>();
+	// 	// SpriteRenderer srbat = battledoggo.GetComponent<SpriteRenderer>();
+	// 	// sr.sprite = srbat.sprite;
+	// 	GameInfo.stageSet = true;
+	// }
+
+	bool 	IsIdle()
 	{
 		if (training[stage] == true || sleeping == true || petting == true || eating == true)
 			return false;
@@ -109,14 +115,14 @@ public class Doggo : MonoBehaviour {
 
 	void TrainDoggo()
 	{
-		if (actiontimer > trainingTimer[stage] * slowanim)
+		if (actiontimer > trainingTimer[stage] * animspeed)
 		{
-			power += 10 * mult;
-			health += 10 * mult;
-			fatigue += 10;
-			food -= 25;
-			if (food <= 0)
-				food = 0;
+			GameInfo.power += 10 * mult;
+			GameInfo.health += 10 * mult;
+			GameInfo.fatigue += 10;
+			GameInfo.food -= 25;
+			if (GameInfo.food <= 0)
+				GameInfo.food = 0;
 			training[stage] = false;
 			anim.SetBool("training" + stage, training[stage]);
 		}
@@ -124,11 +130,11 @@ public class Doggo : MonoBehaviour {
 
 	void Eat()
 	{
-		if (actiontimer > eatingTimer * slowanim)
+		if (actiontimer > eatingTimer * animspeed)
 		{
-			food += 50;
-			if (food > 100)
-				food = 100;
+			GameInfo.food += 50;
+			if (GameInfo.food > 100)
+				GameInfo.food = 100;
 			eating = false;
 			gammelle.SetActive(false);
 			anim.SetBool("eating", eating);
@@ -137,11 +143,11 @@ public class Doggo : MonoBehaviour {
 
 	void Sleep()
 	{
-		if (actiontimer > sleepingTimer * slowanim)
+		if (actiontimer > sleepingTimer * animspeed)
 		{
-			fatigue -= 50;
-			if (fatigue < 0)
-				fatigue = 0;
+			GameInfo.fatigue -= 50;
+			if (GameInfo.fatigue < 0)
+				GameInfo.fatigue = 0;
 			sleeping = false;
 			anim.SetBool("sleeping", sleeping);
 			bed.SetActive(false);
@@ -151,12 +157,12 @@ public class Doggo : MonoBehaviour {
 
 	void Pet()
 	{
-		if (actiontimer > pettingTimer * slowanim)
+		if (actiontimer > pettingTimer * animspeed)
 		{
-			if (fatigue < 100)
-				specialgauge += 1;
-			mult = (1 + (specialgauge * 0.8f)) * ((food / 100) + 0.3f);
-			fatigue += 50;
+			if (GameInfo.fatigue < 100)
+				GameInfo.specialgauge += 1;
+			mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f);
+			GameInfo.fatigue += 50;
 			petting = false;
 			anim.SetBool("petting", petting);
 			hand.SetActive(false);
@@ -173,16 +179,27 @@ public class Doggo : MonoBehaviour {
 			Sleep();
 		if (petting == true)
 			Pet();
-		mult = (1 + (specialgauge * 0.8f)) * ((food / 100) + 0.3f);
-		if (fatigue > 100)
-			slowanim = 2;
+		mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f);
+		if (GameInfo.fatigue > 100)
+			animspeed = 2;
 		else
-			slowanim = 1;
+			animspeed = 1;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		actiontimer += Time.deltaTime;
-		CheckAction();
+
+		// if (GameInfo.battle == false)
+		// {
+			// if (GameInfo.stageSet == false)
+			// 	SetNotBattle();
+			actiontimer += Time.deltaTime;
+			CheckAction();
+		// }
+		// if (GameInfo.battle == true)
+		// {
+		// 	if (GameInfo.stageSet == false)
+		// 		SetBattle();
+		// }
 	}
 }

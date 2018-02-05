@@ -16,46 +16,45 @@ public class CanvasScript : MonoBehaviour {
 	Doggo	doggoScript;
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad(this);
 		doggoScript = player.GetComponent<Doggo>();
 	}
 
 	void Update()
 	{
-		fatiguetext.text = "fatigue : " + doggoScript.fatigue;
-		foodtext.text = "food : " + doggoScript.food;
-		healthtext.text = "health : " + doggoScript.health;
-		powertext.text = "power : " + doggoScript.power;
+		fatiguetext.text = "fatigue : " + GameInfo.fatigue;
+		foodtext.text = "food : " + GameInfo.food;
+		healthtext.text = "health : " + GameInfo.health;
+		powertext.text = "power : " + GameInfo.power;
 		multtext.text = "training mult = " + doggoScript.mult;
-		if (doggoScript.fatigue > 100f)
+		if (GameInfo.fatigue > 100f)
 			fatiguetext.color = Color.red;
 		else
 			fatiguetext.color = Color.black;
 			
-		if (doggoScript.food == 0)
+		if (GameInfo.food == 0)
 			foodtext.color = Color.red;
 		else
 			foodtext.color = Color.black;
 	}
 
-	void CallStartTrainDoggo()
-	{
-		doggoScript.StartTrainDoggo();
-	}
+	// void CallStartTrainDoggo()
+	// {
+	// 	doggoScript.StartTrainDoggo();
+	// }
 
-	void CallStartEat()
-	{
-		doggoScript.StartEat();
-	}
+	// void CallStartEat()
+	// {
+	// 	doggoScript.StartEat();
+	// }
 
-	void CallStartSleep()
-	{
-		doggoScript.StartSleep();
-	}
+	// void CallStartSleep()
+	// {
+	// 	doggoScript.StartSleep();
+	// }
 
-	void CallStartPet()
-	{
-		doggoScript.StartPet();
-	}
+	// void CallStartPet()
+	// {
+	// 	doggoScript.StartPet();
+	// }
 	
 }
