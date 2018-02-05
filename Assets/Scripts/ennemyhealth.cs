@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Doggohealth : MonoBehaviour {
+public class ennemyhealth : MonoBehaviour {
 
 	Image img;
 
@@ -14,6 +14,6 @@ public class Doggohealth : MonoBehaviour {
 
 	void Update () {
 		// Debug.Log(GameInfo.health+ "  " + GameInfo.BattleHealth+ "  " + GameInfo.health / GameInfo.BattleHealth);
-		img.fillAmount = GameInfo.BattleHealth / GameInfo.health;
+		img.fillAmount = GameInfo.currentennemyhp / GameInfo.maxennemyhp;
 	}
 }

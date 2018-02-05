@@ -11,6 +11,6 @@ public class WoofScript : MonoBehaviour {
 		transform.position = transform.position + (speed * Vector3.right * Time.deltaTime);
 		deathTimer += Time.deltaTime;
 		if (deathTimer > 5f)
-			Destroy(this);
+			Destroy(this.gameObject);
 	}
 }

@@ -958,9 +958,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1184865955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6280e0fa3214b5c4a82ff405280f2dca, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aed7e8bfbc52514fba2f1c8d1466a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doggo: {fileID: 1972728742}
 --- !u!114 &1184865958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1292,7 @@ GameObject:
   - component: {fileID: 1317943385}
   - component: {fileID: 1317943387}
   - component: {fileID: 1317943386}
+  - component: {fileID: 1317943388}
   m_Layer: 5
   m_Name: moving part
   m_TagString: Untagged
@@ -1349,6 +1351,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317943384}
+--- !u!114 &1317943388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1317943384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76373d321936b9409e1cb6561adc98a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1324080865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1730,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woof: {fileID: 1891368418127354, guid: 85fe4aad0b872bb45b747b9a910c3216, type: 2}
   superWoof: {fileID: 1901048547800082, guid: 58c5ecaf4d0854d459f17c03c1b90d5b, type: 2}
+  superWooftimer: 0
+  superWoofCD: 10
+  canSuperWoof: 0
 --- !u!61 &1972728745
 BoxCollider2D:
   m_ObjectHideFlags: 0

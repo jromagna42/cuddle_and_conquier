@@ -10,6 +10,8 @@ public static class		GameInfo{
 
 	public static float	health = 10;
 
+	public static float BattleHealth = 10;
+
 	public static float	power = 10;
 
 	public static float	fatigue = 0;
@@ -18,4 +20,8 @@ public static class		GameInfo{
 	public static float	food = 100;
 	
 	public static float	specialgauge = 0;
+
+	public static float maxennemyhp;
+	public static float currentennemyhp;
+	
 }

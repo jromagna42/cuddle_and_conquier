@@ -15,12 +15,13 @@ public class	BattleDoggo : MonoBehaviour {
 	float		smallWoofCD = 0.5f;
 	bool		canSmallWoof = false;
 
-	float		superWooftimer = 0f;
-	float		superWoofCD = 10f;
-	bool		canSuperWoof = false;
+	public float		superWooftimer = 0f;
+	public float		superWoofCD = 10f;
+	public bool		canSuperWoof = false;
 
 	void		Start()
 	{
+		GameInfo.BattleHealth = GameInfo.health;
 		anim = GetComponent<Animator>();
 	}
 
@@ -63,6 +64,7 @@ public class	BattleDoggo : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) & jumping == false)
 		{
 			Jump();
+		//	GameInfo.BattleHealth -= 1;
 		}
 		if (Input.GetKeyDown(KeyCode.B) & canSuperWoof == true)
 		{
