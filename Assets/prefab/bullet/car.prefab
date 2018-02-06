@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114808368042918832}
   - component: {fileID: 68078933845364010}
   m_Layer: 0
-  m_Name: le coq francois
+  m_Name: car
   m_TagString: sbullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866051649869796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.029343218, y: -3.4115689, z: 0}
+  m_LocalPosition: {x: -2.1734836, y: -3.2370045, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,15 +57,16 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 5.3696103, y: -0.033089712}
-  - {x: 2.6772385, y: -4.6172595}
-  - {x: 0.3998184, y: -4.552891}
-  - {x: -3.7266538, y: 1.8060448}
-  - {x: -2.3954675, y: 3.6068366}
-  - {x: -0.17163435, y: 4.7276435}
-  - {x: 3.9422882, y: 4.830459}
-  - {x: 4.1088023, y: 1.9226637}
-  - {x: 5.318541, y: 0.26472178}
+  - {x: 7.0483375, y: -1.492853}
+  - {x: 4.428954, y: -2.4641075}
+  - {x: -3.578037, y: -2.874162}
+  - {x: -8.945308, y: -1.0039989}
+  - {x: -8.77852, y: 0.110064335}
+  - {x: -2.0670214, y: 2.8769546}
+  - {x: 0.59474146, y: 2.1730587}
+  - {x: 3.8328063, y: 2.6043215}
+  - {x: 6.8093643, y: 1.4482402}
+  - {x: 7.0337625, y: -1.4140065}
 --- !u!114 &114808368042918832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a988f784b45130a46a09b611f9688b08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95f0eb0e1a0c15a479768c2c17aafe21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -17,13 +17,13 @@ public class Doggo : MonoBehaviour {
 	float	actiontimer = 0f;
 
 	bool	sleeping = false;
-	float	sleepingTimer = 6f;
+	float	sleepingTimer = 3f;
 
 	bool	petting = false;
-	float	pettingTimer = 3f;
+	float	pettingTimer = 2f;
 
 	bool	eating = false;
-	float	eatingTimer = 4f;
+	float	eatingTimer = 2f;
 
 
 	int stage = 0;
@@ -179,11 +179,11 @@ public class Doggo : MonoBehaviour {
 			Sleep();
 		if (petting == true)
 			Pet();
-		mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f);
+		mult = (1 + (GameInfo.specialgauge * 0.8f)) * ((GameInfo.food / 100) + 0.3f) * (1 + GameInfo.stage * 2);
 		if (GameInfo.fatigue > 100)
-			animspeed = 2;
+			animspeed = 2;//2;
 		else
-			animspeed = 1;
+			animspeed = 1;//1;
 	}
 
 	// Update is called once per frame

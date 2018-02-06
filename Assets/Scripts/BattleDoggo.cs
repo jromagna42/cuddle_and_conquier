@@ -90,7 +90,7 @@ public class	BattleDoggo : MonoBehaviour {
 		}
 		if (other.tag == "sbullet")
 		{
-			GameInfo.BattleHealth -= GameInfo.ennemypowerTab[GameInfo.stage] * 5;
+			GameInfo.BattleHealth -= GameInfo.ennemypowerTab[GameInfo.stage] * 3;
 		}
 	}
 }
